@@ -1,9 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { Card, CardContent, Typography, CardMedia, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+
+import { RootState } from '../store/store';
+
+import { Card, CardContent, Typography, CardMedia, Button, Box } from '@mui/material';
+
 
 const NewsDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

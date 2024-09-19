@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setNews } from '../store/newSlice';
+
+import { setNews } from '../store/newsSlice';
 
 const useFetchNews = () => {
   const dispatch = useDispatch();

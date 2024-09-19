@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import { RootState } from '../store/store';
+
+import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
 
 const NewsList: React.FC = () => {
   const posts = useSelector((state: RootState) => state.news.posts);
