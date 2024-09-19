@@ -23,12 +23,13 @@ const NewsDetail: React.FC = () => {
 
   return (
     <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center">
-      <Card sx={{ width: '100%', marginBottom: 3, backgroundColor: 'black', color: 'white'}}>
+      <Card sx={{ width: '70%', marginBottom: 3, backgroundColor: 'black', color: 'white', borderRadius: '15px'}}>
         <CardMedia
           component="img"
           height="530"
           image={imageUrl}
           alt={post.title}
+          sx={{objectFit: 'contain'}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

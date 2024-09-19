@@ -55,7 +55,7 @@ const NewsList: React.FC = () => {
           <Card
             key={post.id}
             sx={{
-              width: '70%',
+              width: '45%',
               marginBottom: 3,
               backgroundColor: '#000',
               color: 'white',
