@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 
 import Header from './components/Header';
 import NewsList from './components/NewsList';
+import useFetchNews from './hooks/useFetchNews';
 
 const theme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ const theme = createTheme({
 });
 
 const App: React.FC = () => {
+  useFetchNews();
 
   return (
     <ThemeProvider theme={theme}>
