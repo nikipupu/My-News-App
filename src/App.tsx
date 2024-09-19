@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import NewsList from './components/NewsList';
 import NewsDetail from './components/NewsDetail';
-import useFetchNews from './hooks/useFetchNews';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,20 +21,16 @@ const theme = createTheme({
 });
 
 const App: React.FC = () => {
-  useFetchNews();
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Header />
         <Container>
-          <main>
             <Routes>
               <Route path="/" element={<NewsList />} />
               <Route path="/news/:id" element={<NewsDetail />} />
             </Routes>
-          </main>
         </Container>
       </Router>
     </ThemeProvider>

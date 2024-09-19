@@ -1,14 +1,38 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { RootState } from '../store/store';
+import { setNews } from '../store/newsSlice';
 
 import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
 
 const NewsList: React.FC = () => {
   const posts = useSelector((state: RootState) => state.news.posts);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.get('https://api.news.academy.dunice.net/posts');
+        const data = response.data;
+
+        if (data && Array.isArray(data.posts)) {
+          dispatch(setNews(data.posts));
+        } else {
+          console.error('Некорректная структура данных:', data);
+          dispatch(setNews([]));
+        }
+      } catch (error) {
+        console.error('Ошибка при загрузке новостей:', error);
+        dispatch(setNews([]));
+      }
+    };
+
+    fetchNews();
+  }, [dispatch]);
 
   if (posts.length === 0) {
     return <Typography sx={{ color: 'white' }} variant="h6">Загрузка новостей...</Typography>;
