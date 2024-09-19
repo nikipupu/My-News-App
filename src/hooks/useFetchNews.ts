@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { setNews } from '../store/newSlice';
 
 const useFetchNews = () => {
