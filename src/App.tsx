@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 
 import Header from './components/Header';
+import NewsList from './components/NewsList';
 
 const theme = createTheme({
   palette: {
@@ -27,7 +28,7 @@ const App: React.FC = () => {
         <Container>
           <main>
             <Routes>
-              
+              <Route path="/" element={<NewsList />} />
             </Routes>
           </main>
         </Container>
