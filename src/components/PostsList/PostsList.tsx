@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { RootState } from '../store';
-import { setNews } from '../redux/slices/newsSlice';
+import { RootState } from '../../store';
+import { setNews } from '../../redux/slices/newsSlice';
 
 import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import api from '../../api';
 
 const NewsList: React.FC = () => {
   const posts = useSelector((state: RootState) => state.news.posts);
@@ -38,8 +39,6 @@ const NewsList: React.FC = () => {
     return <Typography sx={{ color: 'white' }} variant="h6">Загрузка новостей...</Typography>;
   }
 
-  const baseURL = 'https://api.news.academy.dunice.net';
-
   const handleCardClick = (id: number) => {
     navigate(`/news/${id}`);
   };
@@ -49,7 +48,7 @@ const NewsList: React.FC = () => {
       {posts.map((post) => {
         const imageUrl = post.coverPath.startsWith('http')
           ? post.coverPath
-          : `${baseURL}${post.coverPath}`;
+          : `${api.defaults.baseURL}${post.coverPath}`;
 
         return (
           <Card

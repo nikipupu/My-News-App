@@ -2,9 +2,10 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../store';
+import { RootState } from '../../store';
 
 import { Card, CardContent, Typography, CardMedia, Button, Box } from '@mui/material';
+import api from '../../api';
 
 
 const NewsDetail: React.FC = () => {
@@ -16,10 +17,9 @@ const NewsDetail: React.FC = () => {
     return <Typography variant="h6">Загрузка новости...</Typography>;
   }
 
-  const baseURL = 'https://api.news.academy.dunice.net';
   const imageUrl = post.coverPath.startsWith('http')
     ? post.coverPath
-    : `${baseURL}${post.coverPath}`;
+    : `${api.defaults.baseURL}${post.coverPath}`;
 
   return (
     <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center">

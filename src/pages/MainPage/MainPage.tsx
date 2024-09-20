@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../../components/Header';
-import NewsList from '../../components/NewsList';
+import { Header } from '../../components/Header';
+import { PostsList } from '../../components/PostsList';
 
 import { Box } from '@mui/material';
 
@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
   return (
     <Box>
       <Header />
-      <NewsList />
+      <PostsList />
     </Box>
   );
 };
