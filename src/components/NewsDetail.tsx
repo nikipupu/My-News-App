@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../store/store';
+import { RootState } from '../store';
 
 import { Card, CardContent, Typography, CardMedia, Button, Box } from '@mui/material';
 

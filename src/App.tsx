@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import MainPage from './pages/MainPage/MainPage';
-import DetailPage from './pages/DetailPage/DetailPage';
+import { MainPage } from './pages/MainPage';
+import { DetailPage } from './pages/DetailPage';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';

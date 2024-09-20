@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { RootState } from '../store/store';
-import { setNews } from '../store/newsSlice';
+import { RootState } from '../store';
+import { setNews } from '../redux/slices/newsSlice';
 
 import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
 
