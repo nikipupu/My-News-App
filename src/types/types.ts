@@ -22,8 +22,3 @@ export interface Post {
   commentsCount: number;
   createdAt: string;
 }
-
-export interface NewsState {
-  posts: Post[];
-  total: number;
-}

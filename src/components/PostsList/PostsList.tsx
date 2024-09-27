@@ -1,42 +1,29 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 import { RootState } from '../../store';
-import { setNews } from '../../redux/slices/newsSlice';
-
-import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import { fetchPostsThunk } from '../../redux/thunks';
 import api from '../../api';
 
+import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+
+
 const NewsList: React.FC = () => {
-  const posts = useSelector((state: RootState) => state.news.posts);
+  const { posts, loading, error } = useSelector((state: RootState) => state.news);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get('https://api.news.academy.dunice.net/posts');
-        const data = response.data;
-
-        if (data && Array.isArray(data.posts)) {
-          dispatch(setNews(data.posts));
-        } else {
-          console.error('Некорректная структура данных:', data);
-          dispatch(setNews([]));
-        }
-      } catch (error) {
-        console.error('Ошибка при загрузке новостей:', error);
-        dispatch(setNews([]));
-      }
-    };
-
-    fetchNews();
+    dispatch(fetchPostsThunk());
   }, [dispatch]);
 
-  if (posts.length === 0) {
+  if (loading) {
     return <Typography sx={{ color: 'white' }} variant="h6">Загрузка новостей...</Typography>;
+  }
+
+  if (error) {
+    return <Typography sx={{ color: 'red' }} variant="h6">Ошибка: {error}</Typography>;
   }
 
   const handleCardClick = (id: number) => {
@@ -58,6 +45,7 @@ const NewsList: React.FC = () => {
               marginBottom: 3,
               backgroundColor: '#000',
               color: 'white',
+              cursor: 'pointer',
               transition: 'transform 0.3s',
               '&:hover': {
                 transform: 'scale(1.05)',
