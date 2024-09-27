@@ -19,7 +19,7 @@ const PostsDetail: React.FC = () => {
     if (id) {
       dispatch(fetchPostByIdThunk(id));
     }
-  }, [dispatch, id]);
+  }, []);
 
   if (isLoading) return <CircularProgress />;
   if (error) return <Typography color="error">{error}</Typography>;

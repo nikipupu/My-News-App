@@ -15,7 +15,7 @@ const PostsList: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchPostsThunk());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Box sx={styles.listContainer}>
