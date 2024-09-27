@@ -5,7 +5,7 @@ import { PostsDetail } from '../../components/PostsDetail';
 
 import { Box } from '@mui/material';
 
-const MainPage: React.FC = () => {
+const DetailPage: React.FC = () => {
   return (
     <Box>
       <Header />
@@ -14,4 +14,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default DetailPage;

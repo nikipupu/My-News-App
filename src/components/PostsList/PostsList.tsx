@@ -2,11 +2,16 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { RootState } from '../../store';
+import { RootState } from '../../redux/store';
 import { fetchPostsThunk } from '../../redux/thunks';
 import api from '../../api';
 
-import { Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import { 
+  Card, 
+  CardContent, 
+  Typography, 
+  CardMedia, 
+  Box } from '@mui/material';
 
 
 const NewsList: React.FC = () => {

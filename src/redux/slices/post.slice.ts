@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Post } from '../../types';
 import { fetchPostByIdThunk } from '../thunks';
 
@@ -27,8 +28,8 @@ export const postSlice = createSlice({
         state.post = action.payload
         state.isLoading = false
       })
-      .addCase(fetchPostByIdThunk.rejected, (state, action: PayloadAction<string | null>) => {
-        state.error = action.payload
+      .addCase(fetchPostByIdThunk.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
         state.isLoading = false
       })
   },
