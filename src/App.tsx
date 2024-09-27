@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { MainPage } from './pages/MainPage';
 import { DetailPage } from './pages/DetailPage';
+import { Header } from './components/Header';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+
 
 
 const theme = createTheme({
@@ -24,10 +26,11 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-            <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/news/:id" element={<DetailPage />} />
-            </Routes>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/news/:id" element={<DetailPage />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   );

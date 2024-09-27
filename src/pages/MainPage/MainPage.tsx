@@ -1,17 +1,15 @@
-import React from 'react';
+  import React from 'react';
 
-import { Header } from '../../components/Header';
-import { PostsList } from '../../components/PostsList';
+  import { PostsList } from '../../components/PostsList';
 
-import { Box } from '@mui/material';
+  import { Box } from '@mui/material';
 
-const MainPage: React.FC = () => {
-  return (
-    <Box>
-      <Header />
-      <PostsList />
-    </Box>
-  );
-};
+  const MainPage: React.FC = () => {
+    return (
+      <Box>
+        <PostsList />
+      </Box>
+    );
+  };
 
-export default MainPage;
+  export default MainPage;
