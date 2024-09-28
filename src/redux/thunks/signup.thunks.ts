@@ -4,9 +4,14 @@ import { signup } from "../apis/signup.api";
 import { AUTH_SIGNUP_REQUESTED } from "../actions";
 
 export const signupThunk = createAsyncThunk(
-    AUTH_SIGNUP_REQUESTED,
-    async (data: { email: string; password: string }) => {
+  AUTH_SIGNUP_REQUESTED,
+  async (data: { email: string; password: string; firstName: string }, { rejectWithValue }) => {
+    try {
       const response = await signup(data);
-      return response.data;
+      localStorage.setItem('jwtToken', response.data.accessToken);
+      return response.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || 'Ошибка регистрации. Попробуйте снова.');
     }
-  );
+  }
+);

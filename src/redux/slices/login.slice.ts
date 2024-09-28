@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { loginThunk } from '../thunks';
 
@@ -17,11 +17,7 @@ const initialState: AuthState = {
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.user = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => { 
     builder
       .addCase(loginThunk.pending, (state) => {
@@ -37,7 +33,5 @@ export const loginSlice = createSlice({
       });
   },
 });
-
-export const { logout } = loginSlice.actions;
 
 export default loginSlice.reducer;

@@ -1,8 +1,8 @@
 const card = {
   marginBottom: 2,
   width: '55%',
-  transition: 'transform 0.3s ease',
   position: 'relative',
+  transition: 'transform 0.3s ease',
   '&:hover': {
     transform: 'scale(1.05)',
   },

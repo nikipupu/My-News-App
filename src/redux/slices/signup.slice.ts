@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { signupThunk } from '../thunks';
 
 interface AuthState {
-  user: any | null;
+  user: { email: string; firstName: string } | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -22,6 +22,7 @@ export const signupSlice = createSlice({
     builder
       .addCase(signupThunk.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(signupThunk.fulfilled, (state, action: PayloadAction<any>) => {
         state.user = action.payload;
