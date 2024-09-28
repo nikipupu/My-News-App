@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { Post } from '../../types';
 import styles from './card.style';
+import { getImageUrl } from '../../utils'
 
 import { 
   Card, 
@@ -18,9 +19,10 @@ interface PostsCardProps {
 
 const PostsCard: React.FC<PostsCardProps> = ({ post }) => {
   const location = useLocation();
-  const imageUrl = `${import.meta.env.VITE_API_URL}${post.coverPath}`;
 
   const isDetailPage = location.pathname.includes(`/news/${post.id}`);
+
+  const imageUrl = getImageUrl(post.coverPath);
 
   const cardContent = (
     <>

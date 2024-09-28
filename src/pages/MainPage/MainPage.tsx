@@ -1,15 +1,25 @@
-  import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-  import { PostsList } from '../../components/PostsList';
+import { RootState, AppDispatch } from '../../redux/store';
+import { fetchPostsThunk } from '../../redux/thunks';
+import PostsList from '../../components/PostsList/PostsList';
 
-  import { Box } from '@mui/material';
+import { Box } from '@mui/material';
 
-  const MainPage: React.FC = () => {
-    return (
-      <Box>
-        <PostsList />
-      </Box>
-    );
-  };
+const MainPage: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const { posts, isLoading } = useSelector((state: RootState) => state.posts);
 
-  export default MainPage;
+  useEffect(() => {
+    dispatch(fetchPostsThunk());
+  }, [dispatch]);
+
+  return (
+    <Box>
+      <PostsList posts={posts} isLoading={isLoading} />
+    </Box>
+  );
+};
+
+export default MainPage;

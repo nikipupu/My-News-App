@@ -1,30 +1,17 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 
-import { fetchPostByIdThunk } from '../../redux/thunks';
-import { AppDispatch, RootState } from '../../redux/store';
-import { PostsCard } from '../PostsCard';
-import styles from './detail.style'
+import { Post } from '../../types';
+import styles from './detail.style';
+import PostsCard from '../PostsCard/PostsCard';
 
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
-const PostsDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch<AppDispatch>();
+interface PostsDetailProps {
+  post: Post | null;
+}
 
-  const { post, isLoading, error } = useSelector((state: RootState) => state.post);
-
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchPostByIdThunk(id));
-    }
-  }, []);
-
-  if (isLoading) return <CircularProgress />;
-  if (error) return <Typography color="error">{error}</Typography>;
-
-  if (!post) return null;
+const PostsDetail: React.FC<PostsDetailProps> = ({ post }) => {
+  if (!post) return <Typography color="error">Пост не найден</Typography>;
 
   return (
     <Box sx={styles.detailContainer}>

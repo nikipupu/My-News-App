@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 
-import { RootState, AppDispatch } from '../../redux/store';
-import { fetchPostsThunk } from '../../redux/thunks';
 import { Post } from '../../types';
 import PostsCard from '../PostsCard/PostsCard';
 import styles from './list.style';
 
 import { Box, CircularProgress } from '@mui/material';
 
-const PostsList: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const { posts, isLoading } = useSelector((state: RootState) => state.posts);
+interface PostsListProps {
+  posts: Post[];
+  isLoading: boolean;
+}
 
-  useEffect(() => {
-    dispatch(fetchPostsThunk());
-  }, []);
-
+const PostsList: React.FC<PostsListProps> = ({ posts, isLoading }) => {
   return (
     <Box sx={styles.listContainer}>
       {isLoading ? (
