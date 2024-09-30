@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { login } from "../apis/login.api";
 import { AUTH_LOGIN_REQUESTED } from "../actions";
 
-export const loginThunk = createAsyncThunk(
+export const logInThunk = createAsyncThunk(
   AUTH_LOGIN_REQUESTED,
   async (data: { email: string; password: string }, { rejectWithValue }) => {
     try {

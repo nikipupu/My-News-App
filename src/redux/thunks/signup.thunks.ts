@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signup } from "../apis/signup.api";
 import { AUTH_SIGNUP_REQUESTED } from "../actions";
 
-export const signupThunk = createAsyncThunk(
+export const signUpThunk = createAsyncThunk(
   AUTH_SIGNUP_REQUESTED,
-  async (data: { email: string; password: string; firstName: string }, { rejectWithValue }) => {
+  async (data: { email: string; password: string }, { rejectWithValue }) => {
     try {
       const response = await signup(data);
       localStorage.setItem('jwtToken', response.data.accessToken);

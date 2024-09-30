@@ -23,7 +23,7 @@ const Header: React.FC = () => {
         {user ? (
           <Box sx={styles.userInfo}>
             <Typography variant="body1" sx={styles.userName}>
-              {user.firstName || 'Имя не указано'}
+              {user.email}
             </Typography>
             <div style={styles.avatar} />
           </Box>

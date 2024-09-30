@@ -2,46 +2,38 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { signupThunk } from '../../redux/thunks';
+import { logInThunk } from '../../redux/thunks';
 import { AppDispatch } from '../../redux/store';
-import styles from './signup.style';
+import styles from './login.style';
 
-const SignupForm: React.FC = () => {
+const LogInForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstName, setUsername] = useState('');
   const [error, setError] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      const resultAction = await dispatch(signupThunk({ email, password, firstName }));
+    setError('');
 
-      if (signupThunk.fulfilled.match(resultAction)) {
+    try {
+      const resultAction = await dispatch(logInThunk({ email, password }));
+
+      if (logInThunk.fulfilled.match(resultAction)) {
         navigate('/');
       } else {
-        setError('Такой пользователь уже существует');
+        setError('Неправильный логин или пароль');
       }
     } catch (err) {
-      setError('Произошла ошибка при регистрации.');
+      setError('Произошла ошибка при входе.');
     }
   };
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Регистрация</h2>
+      <h2 style={styles.title}>Вход</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <input
-          type="text"
-          placeholder="Имя пользователя"
-          value={firstName}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          style={styles.input}
-        />
         <input
           type="email"
           placeholder="Email"
@@ -58,11 +50,11 @@ const SignupForm: React.FC = () => {
           required
           style={styles.input}
         />
-        <button type="submit" style={styles.button}>Регистрация</button>
+        <button type="submit" style={styles.button}>Войти</button>
         {error && <p style={styles.error}>{error}</p>}
       </form>
     </div>
   );
 };
 
-export default SignupForm;
+export default LogInForm;

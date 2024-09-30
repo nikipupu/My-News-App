@@ -1,13 +1,13 @@
 const container = {
   display: 'flex',
-  flexDirection: 'column' as 'column',
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
 };
 
 const form = {
   display: 'flex',
-  flexDirection: 'column' as 'column',
+  flexDirection: 'column',
   gap: '10px',
   backgroundColor: '#212121',
   padding: '30px',
@@ -22,7 +22,7 @@ const input = {
   border: '1px solid #ccc',
   borderRadius: '4px',
   width: '100%',
-  boxSizing: 'border-box' as 'border-box',
+  boxSizing: 'border-box',
 };
 
 const button = {

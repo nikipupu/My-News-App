@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { signupThunk } from '../thunks';
+import { signUpThunk } from '../thunks';
 
 interface AuthState {
-  user: { email: string; firstName: string } | null;
+  user: string | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -14,25 +14,25 @@ const initialState: AuthState = {
   error: null,
 };
 
-export const signupSlice = createSlice({
+export const signUpSlice = createSlice({
   name: 'signup',
   initialState,
   reducers: {},
   extraReducers: (builder) => { 
     builder
-      .addCase(signupThunk.pending, (state) => {
+      .addCase(signUpThunk.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(signupThunk.fulfilled, (state, action: PayloadAction<any>) => {
+      .addCase(signUpThunk.fulfilled, (state, action: PayloadAction<any>) => {
         state.user = action.payload;
         state.isLoading = false;
       })
-      .addCase(signupThunk.rejected, (state, action) => {
+      .addCase(signUpThunk.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;
         state.isLoading = false;
       })
   },
 });
 
-export default signupSlice.reducer;
+export default signUpSlice.reducer;
